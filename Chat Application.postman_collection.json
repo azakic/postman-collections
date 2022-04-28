@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "cea77010-61c8-474e-a8c8-62f0ff0c3a9c",
+		"name": "Chat Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1- User API [No Authentication]",
+			"item": [
+				{
+					"name": "[GET] Get user by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/926c42736d8b4c3fa2609d620e031a62",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"926c42736d8b4c3fa2609d620e031a62"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Delete] Delete user by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/a4b48a2a798f4f959616bed075a0213e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"a4b48a2a798f4f959616bed075a0213e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[POST] Create a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"type\": \"consumer\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2- Public [No Authentication]",
+			"item": [
+				{
+					"name": "[Post] Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/login/926c42736d8b4c3fa2609d620e031a62",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login",
+								"926c42736d8b4c3fa2609d620e031a62"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3- Chat",
+			"item": [
+				{
+					"name": "[Post] Initiate a user chat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5MjZjNDI3MzZkOGI0YzNmYTI2MDlkNjIwZTAzMWE2MiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTE5ODQzNzN9.XjJ_u_HILYG40TdfibdghX0MfiZgcw5DoS6LGcMKIrw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"userIds\": [\"dec73f56c234418a8e29f8c18875d388\"],\n\t\"type\": \"consumer-to-consumer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room/initiate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"initiate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Post] Post a message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5MjZjNDI3MzZkOGI0YzNmYTI2MDlkNjIwZTAzMWE2MiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTE5ODQzNzN9.XjJ_u_HILYG40TdfibdghX0MfiZgcw5DoS6LGcMKIrw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"messageText\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room/c62fa1dcb882414196751a3e879364a6/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"c62fa1dcb882414196751a3e879364a6",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Get] Get recent convesation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5MjZjNDI3MzZkOGI0YzNmYTI2MDlkNjIwZTAzMWE2MiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTE5ODQzNzN9.XjJ_u_HILYG40TdfibdghX0MfiZgcw5DoS6LGcMKIrw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Get] Mark Conversation As Read By Room id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZWM3M2Y1NmMyMzQ0MThhOGUyOWY4YzE4ODc1ZDM4OCIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTIwNzEwNzh9.L70dZ0bAmot2uVu0avC6fADi4Blh5Lb3lInmbT1wl5I",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/room/c62fa1dcb882414196751a3e879364a6/mark-read",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"c62fa1dcb882414196751a3e879364a6",
+								"mark-read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Get] Get conversation for a chat room by room id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5MjZjNDI3MzZkOGI0YzNmYTI2MDlkNjIwZTAzMWE2MiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTE5ODQzNzN9.XjJ_u_HILYG40TdfibdghX0MfiZgcw5DoS6LGcMKIrw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/room/c62fa1dcb882414196751a3e879364a6?limit=5&page=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"c62fa1dcb882414196751a3e879364a6"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5- Bonus [Delete]",
+			"item": [
+				{
+					"name": "[Delete] Delete chat room & all it's message by chat room id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5MjZjNDI3MzZkOGI0YzNmYTI2MDlkNjIwZTAzMWE2MiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTE5ODQzNzN9.XjJ_u_HILYG40TdfibdghX0MfiZgcw5DoS6LGcMKIrw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/delete/room/3e84fdaf8f0f46d1a8cee56f84aab7e8s",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete",
+								"room",
+								"3e84fdaf8f0f46d1a8cee56f84aab7e8s"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Delete] Delete message by message id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5MjZjNDI3MzZkOGI0YzNmYTI2MDlkNjIwZTAzMWE2MiIsInVzZXJUeXBlIjoiY29uc3VtZXIiLCJpYXQiOjE1OTE5ODQzNzN9.XjJ_u_HILYG40TdfibdghX0MfiZgcw5DoS6LGcMKIrw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/delete/message/fdea0549867040a3b43495443491cdccs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete",
+								"message",
+								"fdea0549867040a3b43495443491cdccs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
